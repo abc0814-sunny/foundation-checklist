@@ -71,6 +71,23 @@
     background: #fef6e8; border-left: 3px solid #c4820e;
     border-radius: 0 4px 4px 0; font-size: 0.8rem; color: #6b5100;
   }
+  .files-section {
+    margin: 1.5rem 0; padding: 1rem;
+    background: #f0eee8; border-radius: 6px;
+  }
+  .files-section h3 {
+    font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 600;
+  }
+  .file-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 0.7rem; margin-bottom: 0.4rem;
+    background: #fff; border-radius: 4px;
+    text-decoration: none; color: #1a2744;
+    font-size: 0.85rem; transition: background 0.15s;
+  }
+  .file-link:hover { background: #e8e6e0; }
+  .file-icon { font-size: 1.1rem; }
+  .file-size { color: #5a6577; font-size: 0.75rem; margin-left: auto; }
   footer { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid #d4d1ca; font-size: 0.72rem; color: #5a6577; }
 </style>
 </head>
@@ -85,6 +102,19 @@
 </header>
 
 <div id="app"></div>
+
+<div class="files-section">
+  <h3>相關文件下載</h3>
+  <a class="file-link" href="files/游源日慈善協會_申請書.docx" download>
+    <span class="file-icon">📄</span> 申請書（附件一）<span class="file-size">38 KB</span>
+  </a>
+  <a class="file-link" href="files/社團法人游源日慈善社福協會組織章程.docx" download>
+    <span class="file-icon">📄</span> 組織章程草案<span class="file-size">25 KB</span>
+  </a>
+  <a class="file-link" href="files/社團法人游源日慈善社福協會_發起人名冊_v10.docx" download>
+    <span class="file-icon">📄</span> 發起人名冊（附件二）<span class="file-size">29 MB</span>
+  </a>
+</div>
 
 <div class="note">
   <strong>時限提醒：</strong>取得許可籌設公文後 <strong>6 個月內</strong>須完成籌備並成立，否則許可廢止。成立大會紀錄應於會後 <strong>30 日內</strong>函報主管機關。
