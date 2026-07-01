@@ -88,6 +88,13 @@
   .file-link:hover { background: #e8e6e0; }
   .file-icon { font-size: 1.1rem; }
   .file-size { color: #5a6577; font-size: 0.75rem; margin-left: auto; }
+  .task-file {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.72rem; color: #3b5998; text-decoration: none;
+    padding: 0.15rem 0.4rem; margin-top: 0.2rem;
+    background: #e8eef6; border-radius: 3px;
+  }
+  .task-file:hover { background: #d0ddef; }
   footer { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid #d4d1ca; font-size: 0.72rem; color: #5a6577; }
 </style>
 </head>
@@ -103,19 +110,6 @@
 
 <div id="app"></div>
 
-<div class="files-section">
-  <h3>相關文件下載</h3>
-  <a class="file-link" href="files/游源日慈善協會_申請書.docx" download>
-    <span class="file-icon">📄</span> 申請書（附件一）<span class="file-size">38 KB</span>
-  </a>
-  <a class="file-link" href="files/社團法人游源日慈善社福協會組織章程.docx" download>
-    <span class="file-icon">📄</span> 組織章程草案<span class="file-size">25 KB</span>
-  </a>
-  <a class="file-link" href="files/社團法人游源日慈善社福協會_發起人名冊_v10.docx" download>
-    <span class="file-icon">📄</span> 發起人名冊（附件二）<span class="file-size">29 MB</span>
-  </a>
-</div>
-
 <div class="note">
   <strong>時限提醒：</strong>取得許可籌設公文後 <strong>6 個月內</strong>須完成籌備並成立，否則許可廢止。成立大會紀錄應於會後 <strong>30 日內</strong>函報主管機關。
 </div>
@@ -129,9 +123,9 @@ const PHASES = [
   { title: '申請籌設', tasks: [
     { id: 'a1', label: '召集 30 位以上發起人', detail: '須設籍或工作於桃園市、年滿 18 歲' },
     { id: 'a2', label: '收集全體發起人身分證正反面影本', detail: '未設籍桃園市者另附工作證明' },
-    { id: 'a3', label: '製作發起人名冊（附件二格式）', detail: '含身分證影本、聯絡電話、親自簽名/蓋章' },
-    { id: 'a4', label: '擬定章程草案', detail: '' },
-    { id: 'a5', label: '填寫申請書（附件一）', detail: '受文者：桃園市政府' },
+    { id: 'a3', label: '製作發起人名冊（附件二格式）', detail: '含身分證影本、聯絡電話、親自簽名/蓋章', file: { name: '發起人名冊', url: 'files/社團法人游源日慈善社福協會_發起人名冊_v10.docx' } },
+    { id: 'a4', label: '擬定章程草案', detail: '', file: { name: '組織章程', url: 'files/社團法人游源日慈善社福協會組織章程.docx' } },
+    { id: 'a5', label: '填寫申請書（附件一）', detail: '受文者：桃園市政府', file: { name: '申請書', url: 'files/游源日慈善協會_申請書.docx' } },
     { id: 'a6', label: '備齊文件送桃園市政府社會局', detail: '正本＋影本各 1 份' },
     { id: 'a7', label: '取得主管機關許可籌設公文', detail: '收到公文後開始計算 6 個月期限' },
   ]},
@@ -258,6 +252,7 @@ function render() {
             <div>
               <label class="task-label" for="${t.id}">${t.label}</label>
               ${t.detail ? `<div class="task-detail">${t.detail}</div>` : ''}
+              ${t.file ? `<a class="task-file" href="${t.file.url}" download onclick="event.stopPropagation()">📄 ${t.file.name} 下載</a>` : ''}
             </div>
           </div>
         `).join('')}
